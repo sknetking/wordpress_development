@@ -1,4 +1,5 @@
 
+<?php 
 function ocdi_register_plugins( $plugins ) {
 	$theme_plugins = [
 	  [ // A WordPress.org plugin repository example.
