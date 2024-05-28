@@ -1,0 +1,44 @@
+<form id="contact-form" method="post">
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" name="first_name" required>
+    
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" name="last_name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+    
+    <input type="submit" value="Submit">
+</form>
+
+
+and also save js in js file with name - 
+contact-form.js
+
+ jQuery(document).ready(function($) {
+    $('#contact-form').on('submit', function(event) {
+        event.preventDefault();
+
+        var formData = {
+            action: 'submit_contact_form',
+            security: contactForm.nonce,
+            first_name: $('#first-name').val(),
+            last_name: $('#last-name').val(),
+            email: $('#email').val(),
+            message: $('#message').val(),
+        };
+
+        $.post(contactForm.ajax_url, formData, function(response) {
+            if (response.success) {
+                alert('Thank you for your message!');
+                $('#contact-form')[0].reset();
+            } else {
+                alert('There was an error submitting the form. Please try again.');
+            }
+        });
+  });
+	 
+	   });
